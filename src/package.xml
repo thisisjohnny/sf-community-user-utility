@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Community User Utility</fullName>
+    <description>Utility for updating Salesforce contacts with associated Community User detail</description>
+    <types>
+        <members>CommunityUserUtilities</members>
+        <members>CommunityUserUtilitiesTest</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>X2018sf_admin_square_2C_icon_RGB</members>
+        <name>ContentAsset</name>
+    </types>
+    <types>
+        <members>Utilities</members>
+        <name>CustomApplication</name>
+    </types>
+    <types>
+        <members>Contact.Community_User__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>Update_Contacts_with_Community_Users</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
+        <members>Update_Contacts_with_Community_Users</members>
+        <members>Utilities_UtilityBar</members>
+        <name>FlexiPage</name>
+    </types>
+    <types>
+        <members>Update_Contact_s_Community_User</members>
+        <name>Flow</name>
+    </types>
+    <types>
+        <members>Community_User_Package</members>
+        <name>PermissionSet</name>
+    </types>
+    <version>46.0</version>
+</Package>

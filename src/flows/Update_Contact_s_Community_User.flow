@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Updates all contact records with their related community user information</description>
+        <name>Update_All_Contacts_with_Community_User</name>
+        <label>Update All Contacts with Community User</label>
+        <locationX>354</locationX>
+        <locationY>270</locationY>
+        <actionName>CommunityUserUtilities</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Update_Completed</targetReference>
+        </connector>
+    </actionCalls>
+    <decisions>
+        <description>Will continue with the process if the user checks the &quot;I understand&quot; box.</description>
+        <name>Continue</name>
+        <label>Continue?</label>
+        <locationX>347</locationX>
+        <locationY>52</locationY>
+        <defaultConnector>
+            <targetReference>Process_Discontinued</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Do NOT Continue with Process</defaultConnectorLabel>
+        <rules>
+            <name>Continue_with_Process</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>I_understand_I_am_making_a_batch_change_to_all_contacts_in_my_environment</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_All_Contacts_with_Community_User</targetReference>
+            </connector>
+            <label>Continue with Process</label>
+        </rules>
+    </decisions>
+    <description>Updates all contact records&apos; community user information</description>
+    <interviewLabel>Update Contact&apos;s Community User {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Update Contacts&apos; Community User</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <screens>
+        <name>Process_Discontinued</name>
+        <label>Process Discontinued</label>
+        <locationX>589</locationX>
+        <locationY>106</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>DiscontinueDisplay</name>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;Process Cancelled&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;By not acknowledging your understanding of the batch update, the process has been cancelled.&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Update_Completed</name>
+        <label>Update Completed</label>
+        <locationX>590</locationX>
+        <locationY>270</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>UpdateCompletedDisplay</name>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;Update Completed&lt;/span&gt;&lt;/p&gt;&lt;p&gt;The process to update your contacts has completed!&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Update_Contacts_with_Community_User</name>
+        <label>Update Contacts with Community User</label>
+        <locationX>192</locationX>
+        <locationY>50</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Continue</targetReference>
+        </connector>
+        <fields>
+            <name>ReadmeDisplay</name>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;Update Contacts&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;Clicking &lt;/span&gt;&lt;b style=&quot;font-size: 12px;&quot;&gt;Next&lt;/b&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt; will update all contacts with their related Community User records where they exist. This will allow you to use the related user information more easily in formula fields, Process Builder automations, and other declarative development tools. &lt;span class=&quot;ql-cursor&quot;&gt;﻿&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>I_understand_I_am_making_a_batch_change_to_all_contacts_in_my_environment</name>
+            <dataType>Boolean</dataType>
+            <fieldText>I understand I am making a batch change to all contacts in my environment</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <startElementReference>Update_Contacts_with_Community_User</startElementReference>
+    <status>Active</status>
+</Flow>
