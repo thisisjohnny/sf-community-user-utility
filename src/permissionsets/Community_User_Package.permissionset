@@ -20,6 +20,10 @@
     </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>Community User Package</label>
+    <tabSettings>
+        <tab>Update_Contacts_with_Community_Users</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
     <userPermissions>
         <enabled>true</enabled>
         <name>ManageInternalUsers</name>
